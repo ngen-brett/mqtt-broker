@@ -3,7 +3,7 @@ on: [push]
 jobs:
   container-build:
     runs-on: ubuntu-latest
-    name: Build webserver/app container
+    name: Build app container
     steps:
       - name: checkout local
         uses: actions/checkout@v4
@@ -35,7 +35,7 @@ jobs:
       - name: Checkout app
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: git clone git@github.com:${{ github.repository_owner }}/${{ github.repository }}
+        run: git clone git@github.com:${{ github.repository }}
           
       - name: Build and push Docker image
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
