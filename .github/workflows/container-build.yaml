@@ -19,7 +19,7 @@ jobs:
         env:
           ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
         run: |
-          openssl aes-256-cbc -d -a -pbkdf2 -in .github/workflows/secrets/id_ed25519.enc -out .github/workflows/secrets/id_ed25519 -pass pass:${ENCRYPTION_KEY} 
+          openssl enc -d -aes-256-cbc -iter 20000 -pbkdf2 -in .github/workflows/secrets/id_ed25519.enc -out .github/workflows/secrets/id_ed25519 -k ${ENCRYPTION_KEY} 
           #openssl aes-256-cbc -in .github/workflows/secrets/id_ed25519.enc -out .github/workflows/secrets/id_ed25519 -pass pass:${ENCRYPTION_KEY} -d -md sha256
 
       - name: setup SSH agent
