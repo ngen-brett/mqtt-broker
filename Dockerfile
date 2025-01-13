@@ -103,6 +103,9 @@ RUN set -x && \
 
 VOLUME ["/mosquitto/data", "/mosquitto/log"]
 
+RUN mkdir -p /mosquitto/default
+RUN cp /mosquitto/config/mosquitto.conf /mosquitto/default/
+
 # Set up the entry point script and default command
 COPY docker-entrypoint.sh mosquitto-no-auth.conf /
 RUN chmod +x /docker-entrypoint.sh
