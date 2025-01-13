@@ -9,7 +9,7 @@ fi
 
 if [ -f "/mosquitto/config/mosquitto.conf" ]
 then
-  cp /mosquitto/default/mosquitto-no-auth.conf /mosquitto/config/
+  cp /mosquitto/default/mosquitto-no-auth.conf /mosquitto/config/mosquitto.conf
 fi
 
 exec "$@"
