@@ -9,6 +9,7 @@ ENV VERSION=2.0.19 \
     LWS_VERSION=4.2.1 \
     LWS_SHA256=842da21f73ccba2be59e680de10a8cce7928313048750eb6ad73b6fa50763c51
 
+RUN mkdir -p /mosquitto/default
 RUN set -x && \
     apk --no-cache add --virtual build-deps \
         build-base \
@@ -85,7 +86,7 @@ RUN set -x && \
     install -s -m755 /build/mosq/apps/mosquitto_ctrl/mosquitto_ctrl /usr/bin/mosquitto_ctrl && \
     install -s -m755 /build/mosq/apps/mosquitto_passwd/mosquitto_passwd /usr/bin/mosquitto_passwd && \
     install -s -m755 /build/mosq/plugins/dynamic-security/mosquitto_dynamic_security.so /usr/lib/mosquitto_dynamic_security.so && \
-    install -m644 /build/mosq/mosquitto.conf /mosquitto/config/mosquitto.conf && \
+    install -m644 /build/mosq/mosquitto.conf /mosquitto/default/mosquitto.conf && \
     install -Dm644 /build/lws/LICENSE /usr/share/licenses/libwebsockets/LICENSE && \
     install -Dm644 /build/mosq/epl-v20 /usr/share/licenses/mosquitto/epl-v20 && \
     install -Dm644 /build/mosq/edl-v10 /usr/share/licenses/mosquitto/edl-v10 && \
@@ -103,8 +104,6 @@ RUN set -x && \
 
 VOLUME ["/mosquitto/data", "/mosquitto/log"]
 
-RUN mkdir -p /mosquitto/default
-RUN cp /mosquitto/config/mosquitto.conf /mosquitto/default/
 
 # Set up the entry point script and default command
 COPY docker-entrypoint.sh mosquitto-no-auth.conf /
