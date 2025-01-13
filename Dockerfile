@@ -1,6 +1,6 @@
 FROM alpine:3.20
 
-LABEL maintainer="Roger Light <roger@atchoo.org>" \
+LABEL maintainer="Brett@NGEN <25758102+ngen-brett@users.noreply.github.com>" \
     description="Eclipse Mosquitto MQTT Broker"
 
 ENV VERSION=2.0.19 \
