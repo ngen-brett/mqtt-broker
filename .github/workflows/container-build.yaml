@@ -20,7 +20,6 @@ jobs:
           ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
         run: |
           openssl enc -d -aes-256-cbc -iter 20000 -pbkdf2 -in .github/workflows/secrets/id_ed25519.enc -out .github/workflows/secrets/id_ed25519 -k ${ENCRYPTION_KEY} 
-          #openssl aes-256-cbc -in .github/workflows/secrets/id_ed25519.enc -out .github/workflows/secrets/id_ed25519 -pass pass:${ENCRYPTION_KEY} -d -md sha256
 
       - name: setup SSH agent
         env:
@@ -44,7 +43,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/${{ github.repository }}
+          tags: ghcr.io/${{ github.repository }}
           outputs: type=image,name=target,annotation-index.org.opencontainers.image.description=${{ github.repository }}
       - name: get output time
         run: echo "the time was ${{ steps.build.time }}"
