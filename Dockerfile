@@ -108,6 +108,7 @@ RUN cp /mosquitto/config/mosquitto.conf /mosquitto/default/
 
 # Set up the entry point script and default command
 COPY docker-entrypoint.sh mosquitto-no-auth.conf /
+COPY mosquitto-no-auth.conf /mosquitto/default/
 RUN chmod +x /docker-entrypoint.sh
 EXPOSE 1883
 ENTRYPOINT ["/docker-entrypoint.sh"]
