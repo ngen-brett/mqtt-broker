@@ -97,6 +97,10 @@ RUN set -x && \
     apk del build-deps && \
     rm -rf /build
 
+RUN set -x && \
+    apk --no-cache add --virtual build-deps \
+    libressl3.8-libssl
+
 VOLUME ["/mosquitto/data", "/mosquitto/log"]
 
 # Set up the entry point script and default command
