@@ -5,7 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Build app container
     permissions:
-      contents: read
       packages: write
     steps:
       - name: checkout local
