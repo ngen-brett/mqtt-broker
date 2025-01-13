@@ -43,8 +43,8 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/${{ github.repository }}
-          #tags: ghcr.io/${{ github.repository }}
+          #tags: ghcr.io/${{ github.repository_owner }}/${{ github.repository }}
+          tags: ghcr.io/${{ github.repository }}
           outputs: type=image,name=target,annotation-index.org.opencontainers.image.description=${{ github.repository }}
       - name: get output time
         run: echo "the time was ${{ steps.build.time }}"
