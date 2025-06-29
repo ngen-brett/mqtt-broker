@@ -48,9 +48,10 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest-amd64
             ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
           #tags: ghcr.io/${{ github.repository}}:${{ github.sha }}
-          outputs: type=image,name=target,annotation-index.org.opencontainers.image.description=${{ github.repository }}
+          outputs: type=image,name=target,annotation-index.org.opencontainers.image.description=${{ github.repository }}-amd64
 
       - name: get output time
         run: echo "the time was ${{ steps.build.time }}"
